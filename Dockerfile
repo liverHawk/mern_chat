@@ -1,10 +1,7 @@
-FROM ubuntu:latest
+FROM node:latest
 
-WORKDIR /app
+WORKDIR /app/client
 
 RUN apt-get update && apt-get upgrade -y
-
-RUN apt-get install -y \
-    nodejs npm
 
 RUN npm install -g bun

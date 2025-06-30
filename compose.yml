@@ -4,12 +4,12 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "5173:5173"
     volumes:
       - .:/app
     environment:
       - NODE_ENV=development
-    command: bun run dev
+    command: bun run dev:docker
   db:
     image: mongo:latest
     ports:
