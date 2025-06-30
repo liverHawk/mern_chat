@@ -5,8 +5,16 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5173:5173"
-    volumes:
-      - .:/app
+    # volumes:
+    #   - .:/app
+    develop:
+      watch:
+        - action: sync
+          path: ./client
+          target: /app/client
+          ignore:
+            - node_modules
+            - .git
     environment:
       - NODE_ENV=development
     command: bun run dev:docker
