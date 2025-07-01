@@ -16,7 +16,7 @@ export default function HomePage() {
             }>
                 <Sidebar selectedUser={selectedUser} setSelectedUser={setSelectedUser}/>
                 <ChatContainer selectedUser={selectedUser} setSelectedUser={setSelectedUser} />
-                <RightSidebar />
+                <RightSidebar selectedUser={selectedUser}/>
             </div>
         </div>
     )
