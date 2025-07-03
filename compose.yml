@@ -2,9 +2,10 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: client.Dockerfile
     ports:
       - "5173:5173"
+    working_dir: /app/client
     # volumes:
     #   - .:/app
     develop:
@@ -18,6 +19,24 @@ services:
     environment:
       - NODE_ENV=development
     command: bun run dev:docker
+  
+  server:
+    build:
+      context: .
+      dockerfile: server.Dockerfile
+    ports:
+      - "3000:3000"
+    working_dir: /app/server
+    # volumes:
+    #   - ./server:/app/server
+    develop:
+      watch:
+        - action: sync
+          path: ./server
+          target: /app/server
+          ignore: 
+            - node_modules
+            - .git
   db:
     image: mongo:latest
     ports:
