@@ -27,17 +27,17 @@ services:
     ports:
       - "3000:3000"
     working_dir: /app/server
-    # volumes:
-    #   - ./server:/app/server
-    #   - node_modules:/app/server/node_modules
-    develop:
-      watch:
-        - action: sync
-          path: ./server
-          target: /app/server
-          ignore: 
-            - node_modules
-            - .git
+    volumes:
+      - ./server:/app/server
+      # - node_modules:/app/server/node_modules
+    # develop:
+    #   watch:
+    #     - action: sync
+    #       path: ./server
+    #       target: /app/server
+    #       ignore: 
+    #         - node_modules
+    #         - .git
     command: ["bun", "run", "dev"]
   db:
     image: mongo:latest
